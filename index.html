@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HireVanta | Recruitment Search</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            color: #19233b;
+        }
+
+        header {
+            background: white;
+            padding: 22px 7%;
+            border-bottom: 1px solid #e5e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 800;
+            text-decoration: none;
+            color: #19233b;
+        }
+
+        .logo span {
+            color: #6758e8;
+        }
+
+        .tag {
+            font-size: 11px;
+            letter-spacing: 1.4px;
+            color: #6758e8;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+        .eyebrow {
+            color: #6758e8;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            color: #6b7488;
+            line-height: 1.6;
+        }
+
+        .card {
+            margin-top: 28px;
+            padding: 30px;
+            background: white;
+            border: 1px solid #e5e8f0;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px #17203b0a;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #dfe3ed;
+            border-radius: 8px;
+            background: white;
+            font: inherit;
+            font-size: 14px;
+        }
+
+        textarea {
+            min-height: 115px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: 2px solid #dedaff;
+            border-color: #6758e8;
+        }
+
+        .hint {
+            font-size: 12px;
+            color: #788196;
+        }
+
+        .submit {
+            margin-top: 25px;
+            width: 100%;
+            padding: 15px;
+            border: 0;
+            border-radius: 9px;
+            background: #6758e8;
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .submit:hover {
+            background: #5143cf;
+        }
+
+        footer {
+            padding: 25px;
+            text-align: center;
+            color: #8991a2;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full {
+                grid-column: auto;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .tag {
+                font-size: 9px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a class="logo" href="/">HireVanta<span>.</span></a>
+        <span class="tag">SMART RECRUITMENT</span>
+    </header>
+
+    <main>
+        <p class="eyebrow">TALENT SOURCING WORKSPACE</p>
+        <h1>Start a recruitment search</h1>
+        <p class="intro">
+            Add the role requirements to find matching public candidate profiles.
+        </p>
+
+        <section class="card">
+            <form action="/create-search" method="POST" enctype="multipart/form-data">
+                <div class="grid">
+                    <div class="field full">
+                        <label for="job_title">Job title *</label>
+                        <input id="job_title" name="job_title" placeholder="e.g. Data Analyst" required>
+                    </div>
+
+                    <div class="field full">
+                        <label for="description">Job description</label>
+                        <textarea id="description" name="description"
+                            placeholder="Paste the JD text here, or attach a JD file below."></textarea>
+                        <span class="hint">Enter a job description or attach a file. JD terms and the criteria below are used to find profiles.</span>
+                    </div>
+
+                    <div class="field full">
+                        <label for="jd_file">Attach JD file</label>
+                        <input id="jd_file" type="file" name="jd_file" accept=".pdf,.docx,.txt">
+                        <span class="hint">PDF, DOCX or TXT, up to 10 MB. Text is extracted automatically; scanned PDFs need OCR.</span>
+                    </div>
+
+                    <div class="field">
+                        <label for="technical_skills">Technical skills</label>
+                        <input id="technical_skills" name="technical_skills" placeholder="SQL, Python, Excel">
+                    </div>
+
+                    <div class="field">
+                        <label for="experience">Required experience</label>
+                        <input id="experience" name="experience" placeholder="Fresher, 0–2 years, 3–5 years">
+                    </div>
+
+                    <div class="field">
+                        <label for="other_skills">Additional must-have criteria</label>
+                        <input id="other_skills" name="other_skills"
+                            placeholder="Certifications, industry, seniority, domain, or any other requirement">
+                    </div>
+
+                    <div class="field">
+                        <label for="tools">Tools and technologies</label>
+                        <input id="tools" name="tools" placeholder="Power BI, Tableau, Jira">
+                    </div>
+
+                    <div class="field">
+                        <label for="location">Job location</label>
+                        <input id="location" name="location" placeholder="Bengaluru, Dubai, Remote">
+                    </div>
+
+                    <div class="field">
+                        <label for="education">Education requirements</label>
+                        <input id="education" name="education" placeholder="BCA, BSc, MBA or equivalent">
+                    </div>
+
+                    <div class="field">
+                        <label for="employment_type">Employment type</label>
+                        <select id="employment_type" name="employment_type">
+                            <option value="">Select employment type</option>
+                            <option>Full-time</option>
+                            <option>Part-time</option>
+                            <option>Contract</option>
+                            <option>Internship</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="work_mode">Work mode</label>
+                        <select id="work_mode" name="work_mode">
+                            <option value="">Select work mode</option>
+                            <option>On-site</option>
+                            <option>Hybrid</option>
+                            <option>Remote</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit">Search LinkedIn, Naukri and Indeed</button>
+            </form>
+        </section>
+        <p class="intro"><a href="/candidates">Open candidate workspace</a> · <a href="/searches">Saved searches</a></p>
+    </main>
+
+    <footer>HireVanta © 2026 · Smart Recruitment & Talent Sourcing</footer>
+
+</body>
+
+</html>
